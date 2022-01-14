@@ -46,3 +46,23 @@ Entity >> coorY: aCoorY [
 
 	coorY := aCoorY
 ]
+
+{ #category : #operations }
+Entity >> isBottomCollision: anEntity [ 
+	^ (((coorY + 1) == (anEntity coorY)) & (coorX == (anEntity coorX)))
+]
+
+{ #category : #operations }
+Entity >> isLeftCollision: anEntity [ 
+	^ (((coorX - 1) == (anEntity coorX)) & (coorY == (anEntity coorY)))
+]
+
+{ #category : #operations }
+Entity >> isRightCollision: anEntity [ 
+	^ (((coorX + 1) == (anEntity coorX)) & (coorY == (anEntity coorY)))
+]
+
+{ #category : #operations }
+Entity >> isTopCollision: anEntity [ 
+	^ (((coorY - 1) == (anEntity coorY)) & (coorX == (anEntity coorX)))
+]
