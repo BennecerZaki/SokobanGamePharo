@@ -7,10 +7,19 @@ Class {
 	#category : #Sokoban
 }
 
-{ #category : #action }
+{ #category : #'as yet unclassified' }
+Box class >> idChar [
+	^ $x
+]
+
+{ #category : #operations }
+Box >> characterFromEntity [
+	^ 'x'
+]
+
+{ #category : #operations }
 Box >> moveX: aCoorX Y: aCoorY [ 
-	
+
 	coorX := coorX + aCoorX.
 	coorY := coorY + aCoorY
-	
 ]

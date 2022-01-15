@@ -11,6 +11,35 @@ Class {
 	#category : #Sokoban
 }
 
+{ #category : #'as yet unclassified' }
+Entity class >> entityFromCharacter: aCharacter [
+
+	self subclasses do: [ :item |
+		(aCharacter = (item idChar)) ifTrue: [ 
+			^ item new.	 
+		]
+	].
+
+	^ nil
+]
+
+{ #category : #'as yet unclassified' }
+Entity class >> entityFromCharacter: aCharacter andX: aCoorX andY: aCoorY [
+
+	self subclasses do: [ :item |
+		(aCharacter = (item idChar)) ifTrue: [ 
+			^ item new coorX: aCoorX; coorY: aCoorY. 
+		]
+	].
+
+	^ nil
+]
+
+{ #category : #'as yet unclassified' }
+Entity class >> idChar [
+	^ self subclassResponsibility 
+]
+
 { #category : #initialization }
 Entity class >> initializeWithX: aCoorX [
 	
@@ -21,6 +50,11 @@ Entity class >> initializeWithX: aCoorX [
 Entity class >> initializeWithX: aCoorX andY: aCoorY [
 	
 	^ self new coorX: aCoorX; coorY: aCoorY 
+]
+
+{ #category : #operations }
+Entity >> characterFromEntity [
+	^ self subclassResponsibility 
 ]
 
 { #category : #accessing }

@@ -9,7 +9,8 @@ Class {
 		'player',
 		'isCompleted',
 		'boxes',
-		'shelfs'
+		'shelfs',
+		'board'
 	],
 	#category : #Sokoban
 }
@@ -17,17 +18,38 @@ Class {
 { #category : #'class initialization' }
 Sokoboard class >> level1 [
 
-	^ self new level:'#######
+	^ '#######
 #     #
 #  o  #
 #     #
-#######'; isCompleted: false; width: 0; height: 0
+#######'
+]
+
+{ #category : #accessing }
+Sokoboard >> board [
+	^ board
+]
+
+{ #category : #'as yet unclassified' }
+Sokoboard >> boardFromLevel: aLevel [
+
+	| rowId |
+	
+	rowId := 0.
+	board := (aLevel findTokens: (Character cr)) collect: [ :item |
+		rowId := rowId + 1.
+		Row fromString: item andIndex: rowId 
+	]
 ]
 
 { #category : #api }
 Sokoboard >> display [
 
-	Transcript clear; show: level.
+	| theDisplay |
+	Transcript clear.
+	theDisplay := self board do: [ :item | 
+		Row rowToString: item. Transcript cr
+	]
 ]
 
 { #category : #accessing }

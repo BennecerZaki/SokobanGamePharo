@@ -7,9 +7,19 @@ Class {
 	#category : #Sokoban
 }
 
-{ #category : #actions }
-Player >> moveX: anInteger Y: anInteger2 [ 
-	
-	coorX := coorX + anInteger.
-	coorY := coorY + anInteger2 
+{ #category : #'as yet unclassified' }
+Player class >> idChar [
+	^ $o
+]
+
+{ #category : #operations }
+Player >> characterFromEntity [
+	^ 'o'
+]
+
+{ #category : #operations }
+Player >> moveX: aCoorX Y: aCoorY [ 
+
+	coorX := coorX + aCoorX.
+	coorY := coorY + aCoorY
 ]

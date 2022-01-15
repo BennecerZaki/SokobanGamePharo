@@ -1,15 +1,15 @@
 Class {
-	#name : #Wall,
+	#name : #Space,
 	#superclass : #Entity,
 	#category : #Sokoban
 }
 
 { #category : #'as yet unclassified' }
-Wall class >> idChar [
-	^ $#
+Space class >> idChar [
+	^ $ .
 ]
 
 { #category : #'as yet unclassified' }
-Wall >> characterFromEntity [
-	^ '#'
+Space >> characterFromEntity [
+	^ ' '
 ]
