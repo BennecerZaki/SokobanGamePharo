@@ -17,6 +17,11 @@ Player >> characterFromEntity [
 	^ 'o'
 ]
 
+{ #category : #testing }
+Player >> isPlayer [
+	^ true
+]
+
 { #category : #operations }
 Player >> moveX: aCoorX Y: aCoorY [ 
 

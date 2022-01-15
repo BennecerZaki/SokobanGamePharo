@@ -18,7 +18,7 @@ Class {
 { #category : #'class initialization' }
 Sokoboard class >> level1 [
 
-	^ '#######
+	^ self new boardFromLevel: '#######
 #     #
 #  o  #
 #     #
@@ -99,6 +99,43 @@ Sokoboard >> level [
 { #category : #setter }
 Sokoboard >> level: aString [ 
 	level := aString
+]
+
+{ #category : #accessing }
+Sokoboard >> player [
+	| result |
+	
+	board do: [ :row |
+		row do: [ :item | 
+			((item class) == Player) ifTrue: [ result := item ]
+		].
+	].
+	^ result
+]
+
+{ #category : #accessing }
+Sokoboard >> playerMoveX: aCoorX andY: aCoorY [
+	
+	| indexI indexJ playerTmp |
+	indexI := 1.
+	indexJ := 1.
+	playerTmp := self player.
+	board do: [ :row |
+		row do: [ :item | 
+			((item class) == Player) ifTrue: [ 
+				row at: indexJ put: (Space initializeWithX: playerTmp coorX andY: playerTmp coorY). 
+			].
+			(indexI == (playerTmp coorY + aCoorY )) & (indexJ == (playerTmp coorX + aCoorX )) ifTrue: [ 
+				row at: indexJ put: playerTmp. 
+			].
+			indexJ := indexJ + 1
+		].
+		indexJ := 1.
+		indexI := indexI + 1
+	].
+	self player moveX: aCoorX  Y: aCoorY
+	
+
 ]
 
 { #category : #accessing }
