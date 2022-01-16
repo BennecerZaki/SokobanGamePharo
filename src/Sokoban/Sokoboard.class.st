@@ -3,13 +3,12 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'level',
-		'width',
-		'height',
-		'walls',
 		'player',
 		'isCompleted',
 		'boxes',
-		'shelfs',
+		'shelfs'
+	],
+	#classVars : [
 		'board'
 	],
 	#category : #Sokoban
@@ -42,6 +41,11 @@ Sokoboard >> boardFromLevel: aLevel [
 	]
 ]
 
+{ #category : #'as yet unclassified' }
+Sokoboard >> d [
+	self playerMoveX: 0 andY: 1
+]
+
 { #category : #api }
 Sokoboard >> display [
 
@@ -50,16 +54,6 @@ Sokoboard >> display [
 	theDisplay := self board do: [ :item | 
 		Row rowToString: item. Transcript cr
 	]
-]
-
-{ #category : #accessing }
-Sokoboard >> height [
-	^ height
-]
-
-{ #category : #accessing }
-Sokoboard >> height: anInteger [ 
-	height := anInteger
 ]
 
 { #category : #accessing }
@@ -89,6 +83,11 @@ Sokoboard >> isCompletedMethod [
 	].
 
 	(finishedBags == nbOfBags) ifTrue: [ self isCompleted: true ]
+]
+
+{ #category : #'as yet unclassified' }
+Sokoboard >> l [
+	self playerMoveX: -1 andY: 0
 ]
 
 { #category : #actions }
@@ -138,12 +137,12 @@ Sokoboard >> playerMoveX: aCoorX andY: aCoorY [
 
 ]
 
-{ #category : #accessing }
-Sokoboard >> width [
-	^ width
+{ #category : #'as yet unclassified' }
+Sokoboard >> r [
+	self playerMoveX: 1 andY: 0
 ]
 
-{ #category : #accessing }
-Sokoboard >> width: anInteger [ 
-	width := anInteger
+{ #category : #'as yet unclassified' }
+Sokoboard >> u [
+	self playerMoveX: 0 andY: -1 
 ]
