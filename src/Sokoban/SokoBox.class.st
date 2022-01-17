@@ -8,18 +8,8 @@ Class {
 }
 
 { #category : #identity }
-SokoBox class >> idChar [
-	^ $x
-]
+SokoBox class >> idCharacter [
 
-{ #category : #operations }
-SokoBox >> characterFromEntity [
-	^ 'x'
-]
-
-{ #category : #operations }
-SokoBox >> moveX: aCoorX Y: aCoorY [ 
-
-	coorX := coorX + aCoorX.
-	coorY := coorY + aCoorY
+	^ $x.
+	
 ]

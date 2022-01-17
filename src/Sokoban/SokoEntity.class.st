@@ -1,5 +1,5 @@
 "
-I am an abstract class representing all the pieces of the sokoban game.
+I am an abstract class representing movable pieces of the sokoban game.
 "
 Class {
 	#name : #SokoEntity,
@@ -28,8 +28,10 @@ SokoEntity class >> entityForId: aChar atX: xpos andY: ypos [
 ]
 
 { #category : #identity }
-SokoEntity class >> idChar [
+SokoEntity class >> idCharacter [
+
 	^ self subclassResponsibility 
+	
 ]
 
 { #category : #testing }
@@ -40,7 +42,12 @@ SokoEntity >> canMove [
 { #category : #accessing }
 SokoEntity >> id [
 
-	^self class idChar.
+	^self class idCharacter.
+]
+
+{ #category : #initialization }
+SokoEntity >> initialize [ 
+	target := false. 
 ]
 
 { #category : #testing }
@@ -53,4 +60,22 @@ SokoEntity >> instanceId [
 SokoEntity >> position [
 
 	^ position
+]
+
+{ #category : #accessing }
+SokoEntity >> position: anObject [
+
+	position := anObject
+]
+
+{ #category : #accessing }
+SokoEntity >> target [
+
+	^ target
+]
+
+{ #category : #accessing }
+SokoEntity >> target: anObject [
+
+	target := anObject
 ]

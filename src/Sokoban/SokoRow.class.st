@@ -1,3 +1,13 @@
+"
+This class is a representation of a line in the board through the SokoSpace parts.
+
+Internal Representation and Key Implementation Points.
+
+Instance Variables
+elements:  <Object>
+
+Implementation Points
+"
 Class {
 	#name : #SokoRow,
 	#superclass : #Object,
@@ -8,43 +18,17 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-SokoRow class >> fromString: aString [
-	
-	| aList |
-	aList := OrderedCollection new.
-	aString do: [ :i | 		
-		aList add: (
-			SokoEntity entityFromCharacter: i
-		)
-	].
+SokoRow class >> rowFromString: aString forId: anIndex [
 
-	^ aList
-]
-
-{ #category : #'as yet unclassified' }
-SokoRow class >> fromString: aString andIndex: anIndex [
-	
-	| aList aCount |
-	aCount := 0.
-	aList := OrderedCollection new.
-	aString do: [ :i | 
-		aCount := aCount + 1.		
-		aList add: (
-			SokoEntity entityFromCharacter: i andX: aCount andY: anIndex
-		)
-	].
-
-	^ aList
-]
-
-{ #category : #'as yet unclassified' }
-SokoRow class >> rowToString: aRow [
-	
-	String streamContents: [:s | 
-		aRow do: [:each | 
-			Transcript show: each characterFromEntity
-		]
-	]
+	| instance count |
+	count := 0.
+	instance := self new.
+	instance elements: (aString asOrderedCollection collect: [ :aChar | 
+			 SokoSpace
+				 initializeWithId: aChar
+				 atX: anIndex  
+				 andY: (count := count + 1) ]).
+	^ instance
 ]
 
 { #category : #printing }
@@ -59,7 +43,6 @@ SokoRow >> elements: aCollection [
 
 { #category : #printing }
 SokoRow >> toString [
-    | list | 
-    list := elements collect: [ :entity | entity idChar ].
-    ^String newFrom:  list
+
+	^String newFrom: (self elements collect: [ :item | item id ])
 ]
