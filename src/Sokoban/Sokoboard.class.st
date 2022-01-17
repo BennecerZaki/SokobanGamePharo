@@ -37,7 +37,7 @@ Sokoboard >> boardFromLevel: aLevel [
 	rowId := 0.
 	board := (aLevel findTokens: (Character cr)) collect: [ :item |
 		rowId := rowId + 1.
-		Row fromString: item andIndex: rowId 
+		SokoRow fromString: item andIndex: rowId 
 	]
 ]
 
@@ -52,7 +52,7 @@ Sokoboard >> display [
 	| theDisplay |
 	Transcript clear.
 	theDisplay := self board do: [ :item | 
-		Row rowToString: item. Transcript cr
+		SokoRow rowToString: item. Transcript cr
 	]
 ]
 
@@ -106,7 +106,7 @@ Sokoboard >> player [
 	
 	board do: [ :row |
 		row do: [ :item | 
-			((item class) == Player) ifTrue: [ result := item ]
+			((item class) == SokoPlayer) ifTrue: [ result := item ]
 		].
 	].
 	^ result
@@ -121,7 +121,7 @@ Sokoboard >> playerMoveX: aCoorX andY: aCoorY [
 	playerTmp := self player.
 	board do: [ :row |
 		row do: [ :item | 
-			((item class) == Player) ifTrue: [ 
+			((item class) == SokoPlayer) ifTrue: [ 
 				row at: indexJ put: (Space initializeWithX: playerTmp coorX andY: playerTmp coorY). 
 			].
 			(indexI == (playerTmp coorY + aCoorY )) & (indexJ == (playerTmp coorX + aCoorX )) ifTrue: [ 

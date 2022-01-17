@@ -2,23 +2,23 @@
 Box Class.
 "
 Class {
-	#name : #Box,
-	#superclass : #Entity,
+	#name : #SokoBox,
+	#superclass : #SokoEntity,
 	#category : #Sokoban
 }
 
-{ #category : #'as yet unclassified' }
-Box class >> idChar [
+{ #category : #identity }
+SokoBox class >> idChar [
 	^ $x
 ]
 
 { #category : #operations }
-Box >> characterFromEntity [
+SokoBox >> characterFromEntity [
 	^ 'x'
 ]
 
 { #category : #operations }
-Box >> moveX: aCoorX Y: aCoorY [ 
+SokoBox >> moveX: aCoorX Y: aCoorY [ 
 
 	coorX := coorX + aCoorX.
 	coorY := coorY + aCoorY

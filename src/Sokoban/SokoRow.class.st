@@ -1,5 +1,5 @@
 Class {
-	#name : #Row,
+	#name : #SokoRow,
 	#superclass : #Object,
 	#instVars : [
 		'elements'
@@ -8,13 +8,13 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Row class >> fromString: aString [
+SokoRow class >> fromString: aString [
 	
 	| aList |
 	aList := OrderedCollection new.
 	aString do: [ :i | 		
 		aList add: (
-			Entity entityFromCharacter: i
+			SokoEntity entityFromCharacter: i
 		)
 	].
 
@@ -22,7 +22,7 @@ Row class >> fromString: aString [
 ]
 
 { #category : #'as yet unclassified' }
-Row class >> fromString: aString andIndex: anIndex [
+SokoRow class >> fromString: aString andIndex: anIndex [
 	
 	| aList aCount |
 	aCount := 0.
@@ -30,7 +30,7 @@ Row class >> fromString: aString andIndex: anIndex [
 	aString do: [ :i | 
 		aCount := aCount + 1.		
 		aList add: (
-			Entity entityFromCharacter: i andX: aCount andY: anIndex
+			SokoEntity entityFromCharacter: i andX: aCount andY: anIndex
 		)
 	].
 
@@ -38,7 +38,7 @@ Row class >> fromString: aString andIndex: anIndex [
 ]
 
 { #category : #'as yet unclassified' }
-Row class >> rowToString: aRow [
+SokoRow class >> rowToString: aRow [
 	
 	String streamContents: [:s | 
 		aRow do: [:each | 
@@ -48,17 +48,17 @@ Row class >> rowToString: aRow [
 ]
 
 { #category : #printing }
-Row >> elements [ 
+SokoRow >> elements [ 
 	^ elements
 ]
 
 { #category : #printing }
-Row >> elements: aCollection [
+SokoRow >> elements: aCollection [
 	elements := aCollection
 ]
 
 { #category : #printing }
-Row >> toString [
+SokoRow >> toString [
     | list | 
     list := elements collect: [ :entity | entity idChar ].
     ^String newFrom:  list

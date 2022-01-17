@@ -2,28 +2,28 @@
 Player Class.
 "
 Class {
-	#name : #Player,
-	#superclass : #Entity,
+	#name : #SokoPlayer,
+	#superclass : #SokoEntity,
 	#category : #Sokoban
 }
 
-{ #category : #'as yet unclassified' }
-Player class >> idChar [
+{ #category : #identity }
+SokoPlayer class >> idChar [
 	^ $o
 ]
 
 { #category : #operations }
-Player >> characterFromEntity [
+SokoPlayer >> characterFromEntity [
 	^ 'o'
 ]
 
 { #category : #testing }
-Player >> isPlayer [
+SokoPlayer >> isPlayer [
 	^ true
 ]
 
 { #category : #operations }
-Player >> moveX: aCoorX Y: aCoorY [ 
+SokoPlayer >> moveX: aCoorX Y: aCoorY [ 
 
 	coorX := coorX + aCoorX.
 	coorY := coorY + aCoorY
